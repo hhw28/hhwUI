@@ -1,0 +1,20 @@
+{
+  "name": "hhwUI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhw28/hhwUI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hhw28/hhwUI/issues"
+  },
+  "homepage": "https://github.com/hhw28/hhwUI#readme"
+}
