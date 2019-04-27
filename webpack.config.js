@@ -23,6 +23,20 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: "svg-sprite-loader"
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [
+          {
+            loader: "style-loader", // style-loader 把 css 插入到head标签中
+            options: {
+              insertAt: "top" // style标签内样式放在最上面
+            }
+          },
+          // "postcss-loader",
+          "css-loader", // css-loader 解析 @import 这个语法
+          "sass-loader"
+        ]
       }
     ]
   }
