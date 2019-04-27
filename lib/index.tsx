@@ -1,5 +1,5 @@
-import Button from "./button";
+import React from "react";
+import ReactDOM from "react-dom";
+import Icon from "./Icon";
 
-console.log("hello world");
-
-export { Button };
+ReactDOM.render(<Icon name="alipay" />, document.getElementById("root"));
