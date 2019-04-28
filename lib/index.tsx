@@ -7,6 +7,7 @@ ReactDOM.render(
     <Icon name="wechat" onClick={() => console.log('1')} />
     <Icon
       name="alipay"
+      className="icon"
       onTouchStart={() => console.log('start')}
       onTouchMove={() => console.log('move')}
       onTouchEnd={() => { console.log('end'); }}
