@@ -4,8 +4,13 @@ import Icon from "./Icon/Icon";
 
 ReactDOM.render(
   <div>
-    <Icon name="wechat" />
-    <Icon name="alipay" />
+    <Icon name="wechat" onClick={() => console.log('1')} />
+    <Icon
+      name="alipay"
+      onTouchStart={() => console.log('start')}
+      onTouchMove={() => console.log('move')}
+      onTouchEnd={() => { console.log('end'); }}
+    />
   </div>,
   document.getElementById("root")
 );
