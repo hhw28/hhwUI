@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Icon from "./Icon/Icon";
+import Icon from "./icon/icon";
 
 ReactDOM.render(
   <div>
