@@ -5,6 +5,7 @@ defaults: &defaults
 
 version: 2
 jobs:
+  # 准备阶段
   prepare:
     <<: *defaults
     steps:
@@ -21,6 +22,7 @@ jobs:
           root: .
           paths:
             - node_modules
+  # 构建阶段
   build:
     <<: *defaults
     steps:
@@ -35,6 +37,7 @@ jobs:
             - package.json
             - LICENSE
             - README.md
+  # 测试阶段
   test:
     <<: *defaults
     steps:
@@ -44,6 +47,7 @@ jobs:
       - run: yarn ci
       - store_test_results:
           path: test-results
+  # 发布阶段
   publish:
     <<: *defaults
     steps:
@@ -51,7 +55,7 @@ jobs:
           at: .
       - run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
       - run: npm publish
-
+# 工作流
 workflows:
   version: 2
   build_accept_deploy:
