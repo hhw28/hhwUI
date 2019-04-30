@@ -1,4 +1,5 @@
 // https://jestjs.io/docs/en/configuration.html
+// 本地测试配置
 
 module.exports = {
   verbose: true,

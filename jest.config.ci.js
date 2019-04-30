@@ -1,3 +1,4 @@
+// CI测试新增配置
 const base = require("./jest.config");
 module.exports = Object.assign({}, base, {
   reporters: ["jest-junit"],
