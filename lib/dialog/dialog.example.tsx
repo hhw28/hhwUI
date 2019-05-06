@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import Dialog from "./dialog";
+import Dialog, { alert } from "./dialog";
 
 const DialogExample: React.FunctionComponent = () => {
   const [x, setX] = useState(false);
@@ -34,6 +34,10 @@ const DialogExample: React.FunctionComponent = () => {
         >
           <div>自定义内容</div>
         </Dialog>
+      </div>
+
+      <div>
+        <button onClick={() => alert("111")}>click 3 alert</button>
       </div>
     </Fragment>
   );
