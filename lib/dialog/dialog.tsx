@@ -1,4 +1,5 @@
 import React, { Fragment, ReactElement } from "react";
+import ReactDOM from "react-dom";
 import "./dialog.scss";
 import "../index.scss";
 import Icon from "./../icon/icon";
@@ -24,7 +25,8 @@ const Dialog: React.FunctionComponent<Props> = props => {
       props.onClose(e);
     }
   };
-  return props.visible ? (
+
+  const x = props.visible ? (
     <Fragment>
       <div className={sc("mask")} onClick={onClickMask} />
       <div className={sc()}>
@@ -41,6 +43,8 @@ const Dialog: React.FunctionComponent<Props> = props => {
       </div>
     </Fragment>
   ) : null;
+
+  return ReactDOM.createPortal(x, document.body);
 };
 
 Dialog.defaultProps = {
