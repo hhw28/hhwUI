@@ -1,9 +1,18 @@
 import React, { useState, Fragment } from "react";
-import Dialog, { alert } from "./dialog";
+import Dialog, { alert, confirm, modal } from "./dialog";
 
 const DialogExample: React.FunctionComponent = () => {
   const [x, setX] = useState(false);
   const [y, setY] = useState(false);
+  const openModal = () => {
+    // modal return 出了onClose 方法
+    const onClose = modal(
+      <div>
+        <p>hello modal</p>
+        <button onClick={() => onClose()}>yes</button>
+      </div>
+    );
+  };
 
   return (
     <Fragment>
@@ -37,7 +46,23 @@ const DialogExample: React.FunctionComponent = () => {
       </div>
 
       <div>
-        <button onClick={() => alert("111")}>click 3 alert</button>
+        <button onClick={() => alert("alert")}>click 3 alert</button>
+        <button
+          onClick={() =>
+            confirm(
+              "confirm",
+              () => {
+                console.log("yes");
+              },
+              () => {
+                console.log("no");
+              }
+            )
+          }
+        >
+          click 4 confirm
+        </button>
+        <button onClick={openModal}>click 5 modal</button>
       </div>
     </Fragment>
   );
