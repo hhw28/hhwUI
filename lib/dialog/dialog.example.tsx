@@ -4,6 +4,7 @@ import Dialog, { alert, confirm, modal } from "./dialog";
 const DialogExample: React.FunctionComponent = () => {
   const [x, setX] = useState(false);
   const [y, setY] = useState(false);
+  const [z, setZ] = useState(false);
   const openModal = () => {
     // modal return 出了onClose 方法
     const onClose = modal(
@@ -27,6 +28,21 @@ const DialogExample: React.FunctionComponent = () => {
           onClose={() => setX(!x)}
         >
           <div>11</div>
+        </Dialog>
+      </div>
+
+      <div>
+        <button onClick={() => setZ(!z)}>遮罩不存在</button>
+        <Dialog
+          visible={z}
+          buttons={[
+            <button onClick={() => setZ(!z)}>ok</button>,
+            <button onClick={() => setZ(!z)}>cancel</button>
+          ]}
+          onClose={() => setZ(!z)}
+          whiteMask={true}
+        >
+          <div>遮罩不存在</div>
         </Dialog>
       </div>
 

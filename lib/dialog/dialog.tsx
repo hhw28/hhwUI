@@ -3,13 +3,14 @@ import ReactDOM from "react-dom";
 import "./dialog.scss";
 import "../index.scss";
 import Icon from "./../icon/icon";
-import { scopedClassMaker } from "../classes";
+import { scopedClassMaker } from "../helpers/classes";
 
 interface Props {
   visible: boolean;
   buttons?: Array<ReactElement>;
   onClose: React.MouseEventHandler;
   closeOnClickMask?: boolean;
+  whiteMask?: boolean;
 }
 
 const scopedClass = scopedClassMaker("hhw-dialog");
@@ -26,9 +27,12 @@ const Dialog: React.FunctionComponent<Props> = props => {
     }
   };
 
-  const x = props.visible ? (
+  const result = props.visible && (
     <Fragment>
-      <div className={sc("mask")} onClick={onClickMask} />
+      <div
+        className={props.whiteMask ? sc("mask-white") : sc("mask")}
+        onClick={onClickMask}
+      />
       <div className={sc()}>
         <header className={sc("header")}>
           <div className={sc("title")}>标题</div>
@@ -47,13 +51,14 @@ const Dialog: React.FunctionComponent<Props> = props => {
         )}
       </div>
     </Fragment>
-  ) : null;
+  );
 
-  return ReactDOM.createPortal(x, document.body);
+  return ReactDOM.createPortal(result, document.body);
 };
 
 Dialog.defaultProps = {
-  closeOnClickMask: false
+  closeOnClickMask: false,
+  whiteMask: false
 };
 
 const alert = (content: string) => {
@@ -99,6 +104,7 @@ const modal = (
         afterClose && afterClose();
       }}
       buttons={buttons}
+      closeOnClickMask={true}
     >
       {content}
     </Dialog>
