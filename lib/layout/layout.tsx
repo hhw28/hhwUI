@@ -15,9 +15,12 @@ const Layout: React.FunctionComponent<Props> = props => {
     children.reduce((result, node) => result || node.type === Aside, false);
   return (
     <div
-      className={sc("", {
-        extra: [className, hasAside && "hasAside"].join(" ")
-      })}
+      className={sc(
+        { "": true, hasAside: true, test: false },
+        {
+          extra: [className, hasAside && "hasAside"].join(" ")
+        }
+      )}
       {...rest}
     >
       {props.children}
