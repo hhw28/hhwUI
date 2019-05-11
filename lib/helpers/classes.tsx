@@ -9,22 +9,15 @@ interface ClassToggles {
   [K: string]: boolean;
 }
 function scopedClassMaker(prefix: string) {
-  return function x(name?: string | ClassToggles, options?: Options) {
-    let result;
-    let name2;
-    if (typeof name === "string" || name === undefined) {
-      result = [prefix, name].filter(Boolean).join("-");
-    } else {
-      name2 = Object.entries(name)
-        .filter(item => item[1])
-        .map(item => item[0]);
+  return function x(name: string | ClassToggles, options?: Options) {
+    const nameObject =
+      typeof name === "string" || name === undefined ? { [name]: name } : name;
 
-      result = name2
-        .map(item => {
-          return [prefix, item].filter(Boolean).join("-");
-        })
-        .join(" ");
-    }
+    const result = Object.entries(nameObject)
+      .filter(item => item[1] !== false)
+      .map(item => item[0])
+      .map(name => [prefix, name].filter(Boolean).join("-"))
+      .join(" ");
 
     if (options && options.extra) {
       return [result, options.extra].join(" ");
