@@ -1,11 +1,9 @@
 .hhw-layout {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
 
     &-main {
         flex-grow: 1;
-        border: 1px solid green;
     }
 
     // 下面的同名node

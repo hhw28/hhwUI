@@ -4,44 +4,45 @@ import Header from "./header";
 import Main from "./main";
 import Footer from "./footer";
 import Aside from "./aside";
+import "./layout.example.scss";
 
 const LayoutExample: React.FunctionComponent = () => {
   return (
     <div>
       <h3>第一个例子</h3>
-      <Layout style={{ height: 500 }} className="hi">
-        <Header>header</Header>
-        <Main>main</Main>
-        <Footer>footer</Footer>
+      <Layout style={{ height: 500, width: 500 }}>
+        <Header className="header">header</Header>
+        <Main className="main">main</Main>
+        <Footer className="footer">footer</Footer>
       </Layout>
 
       <h3>第二个例子</h3>
-      <Layout style={{ height: 500 }} className="hi">
-        <Header>header</Header>
+      <Layout style={{ height: 500, width: 500 }}>
+        <Header className="header">header</Header>
         <Layout>
-          <Aside>aside</Aside>
-          <Main>main</Main>
+          <Aside className="aside">aside</Aside>
+          <Main className="main">main</Main>
         </Layout>
-        <Footer>footer</Footer>
+        <Footer className="footer">footer</Footer>
       </Layout>
 
       <h3>第三个例子</h3>
-      <Layout style={{ height: 500 }} className="hi">
-        <Header>header</Header>
+      <Layout style={{ height: 500, width: 500 }}>
+        <Header className="header">header</Header>
         <Layout>
-          <Main>main</Main>
-          <Aside>aside</Aside>
+          <Main className="main">main</Main>
+          <Aside className="aside">aside</Aside>
         </Layout>
-        <Footer>footer</Footer>
+        <Footer className="footer">footer</Footer>
       </Layout>
 
       <h3>第四个例子</h3>
-      <Layout style={{ height: 500 }} className="hi">
-        <Aside>aside</Aside>
+      <Layout style={{ height: 500, width: 500 }}>
+        <Aside className="aside">aside</Aside>
         <Layout>
-          <Header>header</Header>
-          <Main>main</Main>
-          <Footer>footer</Footer>
+          <Header className="header">header</Header>
+          <Main className="main">main</Main>
+          <Footer className="footer">footer</Footer>
         </Layout>
       </Layout>
     </div>

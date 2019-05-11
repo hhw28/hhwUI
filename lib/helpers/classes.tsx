@@ -8,24 +8,18 @@ interface Options {
 interface ClassToggles {
   [K: string]: boolean;
 }
-function scopedClassMaker(prefix: string) {
-  return function x(name: string | ClassToggles = "", options?: Options) {
-    const nameObject =
-      typeof name === "string" || name === undefined ? { [name]: name } : name;
+const scopedClassMaker = (prefix: string) => {
+  return (name: string | ClassToggles = "", options?: Options) => {
+    const nameObject = name instanceof Object ? name : { [name]: name };
 
-    const result = Object.entries(nameObject)
+    return Object.entries(nameObject)
       .filter(item => item[1] !== false)
       .map(item => item[0])
       .map(name => [prefix, name].filter(Boolean).join("-"))
+      .concat((options && options.extra) || [])
       .join(" ");
-
-    if (options && options.extra) {
-      return [result, options.extra].join(" ");
-    } else {
-      return result;
-    }
   };
-}
+};
 
 export { scopedClassMaker };
 

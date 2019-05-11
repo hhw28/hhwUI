@@ -6,7 +6,12 @@ const sc = scopedClassMaker("hhw-layout");
 interface Props extends React.HTMLAttributes<HTMLElement> {}
 
 const Aside: React.FunctionComponent<Props> = props => {
-  return <div className={sc("aside")}>{props.children}</div>;
+  const { className, ...rest } = props;
+  return (
+    <div className={sc("aside", { extra: className })} {...rest}>
+      {props.children}
+    </div>
+  );
 };
 
 export default Aside;
