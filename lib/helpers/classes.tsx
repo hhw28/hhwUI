@@ -9,7 +9,7 @@ interface ClassToggles {
   [K: string]: boolean;
 }
 function scopedClassMaker(prefix: string) {
-  return function x(name: string | ClassToggles, options?: Options) {
+  return function x(name: string | ClassToggles = "", options?: Options) {
     const nameObject =
       typeof name === "string" || name === undefined ? { [name]: name } : name;
 

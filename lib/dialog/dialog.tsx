@@ -33,7 +33,7 @@ const Dialog: React.FunctionComponent<Props> = props => {
         className={props.whiteMask ? sc("mask-white") : sc("mask")}
         onClick={onClickMask}
       />
-      <div className={sc("")}>
+      <div className={sc()}>
         <header className={sc("header")}>
           <div className={sc("title")}>标题</div>
           <div className={sc("close")} onClick={onClickClose}>

@@ -25,6 +25,9 @@ describe("classes", () => {
 
 describe("scopedClassMaker", () => {
   const sc = scopedClassMaker("hhw-layout");
+  it("不接收任何参数", () => {
+    expect(sc()).toEqual("hhw-layout");
+  });
   it("接收空字符串", () => {
     expect(sc("")).toEqual("hhw-layout");
   });
