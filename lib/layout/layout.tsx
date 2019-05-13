@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
 import Aside from "./aside";
+import "./layout.scss";
 import { scopedClassMaker } from "../helpers/classes";
 const sc = scopedClassMaker("hhw-layout");
-import "./layout.scss";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   children: ReactElement | Array<ReactElement>;
@@ -27,3 +27,8 @@ const Layout: React.FunctionComponent<Props> = props => {
 };
 
 export default Layout;
+export { Layout };
+export { default as Header } from "./header";
+export { default as Main } from "./main";
+export { default as Footer } from "./footer";
+export { default as Aside } from "./aside";

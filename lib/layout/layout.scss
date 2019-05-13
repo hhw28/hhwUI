@@ -9,13 +9,12 @@
     // 下面的同名node
     & & {
         flex-grow: 1;
-        flex-direction: row;
     }
 
     &.hasAside {
         flex-direction: row;
 
-        .hhw-layout {
+        >.hhw-layout {
             flex-direction: column;
         }
     }
