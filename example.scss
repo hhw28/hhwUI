@@ -34,6 +34,7 @@ $border: 1px solid $color-l1;
 
 
 .site-page {
+    min-height: 100vh;
 
     >.site-header {
         padding: $padding;
@@ -42,7 +43,6 @@ $border: 1px solid $color-l1;
 
     .site-aside {
         border-right: $border;
-        height: calc(100vh - 120px);
 
         ul {
             li {
