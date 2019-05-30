@@ -12,7 +12,10 @@ ReactDOM.render(
   <Router>
     <Layout className="site-page">
       <Header className="site-header">
-        <div className="logo">hhwUI</div>
+        <div className="logo">
+          <img className="logo-img" src="./hhwUI-logo.png" alt="" />
+          hhwUI
+        </div>
       </Header>
       <Layout>
         <Aside className="site-aside">

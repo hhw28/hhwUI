@@ -39,6 +39,14 @@ $border: 1px solid $color-l1;
     >.site-header {
         padding: $padding;
         border-bottom: $border;
+
+        >.logo {
+
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+        }
     }
 
     .site-aside {

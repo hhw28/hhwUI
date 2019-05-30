@@ -36,6 +36,18 @@ module.exports = {
           "css-loader", // css-loader 解析 @import 这个语法
           "sass-loader"
         ]
+      },
+      {
+        test: /\.(gif|jpg|jpeg|png)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 1024,
+              name: "[name]-test.[ext]"
+            }
+          }
+        ]
       }
     ]
   }
