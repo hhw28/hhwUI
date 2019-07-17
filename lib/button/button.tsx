@@ -1,8 +1,15 @@
 import React from "react";
+import "./button.scss";
+import { scopedClassMaker } from "../helpers/classes";
+const sc = scopedClassMaker("hhw-button");
 
-const Button: React.FunctionComponent = () => {
+interface Props {
+  type?: string;
+}
+
+const Button: React.FunctionComponent<Props> = props => {
   return (
-    <div>
+    <div className={sc(`${props.type ? props.type : ""}`)}>
       <div>Button</div>
     </div>
   );

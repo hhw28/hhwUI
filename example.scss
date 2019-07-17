@@ -41,6 +41,8 @@ $border: 1px solid $color-l1;
         border-bottom: $border;
 
         >.logo {
+            display: flex;
+            align-items: center;
 
             .logo-img {
                 width: 60px;

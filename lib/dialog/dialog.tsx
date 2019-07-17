@@ -4,7 +4,7 @@ import "./dialog.scss";
 import "../index.scss";
 import Icon from "./../icon/icon";
 import { scopedClassMaker } from "../helpers/classes";
-
+const sc = scopedClassMaker("hhw-dialog");
 interface Props {
   visible: boolean;
   buttons?: Array<ReactElement>;
@@ -12,9 +12,6 @@ interface Props {
   closeOnClickMask?: boolean;
   whiteMask?: boolean;
 }
-
-const scopedClass = scopedClassMaker("hhw-dialog");
-const sc = scopedClass;
 
 const Dialog: React.FunctionComponent<Props> = props => {
   const onClickClose: React.MouseEventHandler = e => {
