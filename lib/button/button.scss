@@ -1,0 +1,23 @@
+@import "../helper";
+
+.hhw-button {
+    border: 1px solid red;
+
+    &-primary {
+        background: $color-main;
+    }
+
+    &-dashed {
+        background: $color-w;
+    }
+
+    &-danger {
+        background: $color-err;
+    }
+
+    &-link {
+        color: $color-main;
+        background: $color-w;
+    }
+
+}
