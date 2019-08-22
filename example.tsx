@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import IconDemo from "./lib/icon/icon.demo";
 import ButtonDemo from "./lib/button/button.demo";
+import InputDemo from "./lib/input/input.demo";
 import DialogDemo from "./lib/dialog/dialog.demo";
+import FormDemo from "./lib/form/form.demo";
 import LayoutDemo from "./lib/layout/layout.demo";
 import { Layout, Header, Main, Footer, Aside } from "./lib/layout/layout";
-import FormDemo from "./lib/form/form.demo";
 import "./example.scss";
 
 ReactDOM.render(
@@ -29,6 +30,9 @@ ReactDOM.render(
               <NavLink to="/button">Button</NavLink>
             </li>
             <li>
+              <NavLink to="/input">Input</NavLink>
+            </li>
+            <li>
               <NavLink to="/dialog">Dialog</NavLink>
             </li>
             <li>
@@ -45,6 +49,7 @@ ReactDOM.render(
           <Route path="/dialog" component={DialogDemo} />
           <Route path="/layout" component={LayoutDemo} />
           <Route path="/form" component={FormDemo} />
+          <Route path="/input" component={InputDemo} />
         </Main>
       </Layout>
       <Footer className="site-footer">&copy; 王欢</Footer>

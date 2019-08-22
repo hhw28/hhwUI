@@ -1,0 +1,16 @@
+@import './../helper';
+
+.hhw-input {
+  border: 1px solid $color-l1;
+  line-height: 22px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px fade_out($color-main, 1);
+  transition: box-shadow 250ms;
+
+  &:focus {
+    outline: none;
+    border-color: $color-main;
+    box-shadow: 0 0 0 1px fade_out($color-main, 0.5);
+  }
+}
