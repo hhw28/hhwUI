@@ -1,23 +1,68 @@
 @import "../helper";
 
 .hhw-button {
-    border: 1px solid red;
+  color: $color-t2;
+  background: $color-w;
+  padding: 4px 16px;
+  line-height: 22px;
+  border-radius: 4px;
+  transition: all 250ms;
+  cursor: pointer;
 
-    &-primary {
-        background: $color-main;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &-dashed {
-        background: $color-w;
-    }
+  &-normal {
 
-    &-danger {
-        background: $color-err;
+    &:hover,
+    &:focus {
+      color: $color-main;
+      border-color: $color-main;
     }
+  }
 
-    &-link {
-        color: $color-main;
-        background: $color-w;
+  &-primary {
+    background: $color-main;
+    border-color: $color-main;
+    color: $color-w;
+
+    &:hover,
+    &:focus {
+      background: lighten($color: $color-main, $amount:10%);
+      border-color: lighten($color: $color-main, $amount:10%);
     }
+  }
+
+  &-dashed {
+    border-style: dashed;
+
+    &:hover,
+    &:focus {
+      color: $color-main;
+      border-color: $color-main;
+    }
+  }
+
+  &-danger {
+    color: $color-w;
+    background: $color-err;
+    border-color: $color-err;
+
+    &:hover,
+    &:focus {
+      background: lighten($color: $color-err, $amount:10%);
+      border-color: lighten($color: $color-err, $amount:10%);
+    }
+  }
+
+  &-link {
+    color: $color-main;
+    border: none;
+
+    &:focus {
+      color: darken($color: $color-main, $amount: 20%);
+    }
+  }
 
 }

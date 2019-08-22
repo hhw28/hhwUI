@@ -1,6 +1,8 @@
 import React, { ReactFragment } from "react";
 import "./form.scss";
 import Input from '../input/input';
+import { scopedClassMaker } from "../helpers/classes";
+const sc = scopedClassMaker("hhw-form");
 
 export interface FormValue {
   [k: string]: any
@@ -12,6 +14,7 @@ interface Props {
   onSubmit: React.FormEventHandler<HTMLFormElement>,
   onChange: (value: FormValue) => void,
   errors: any
+  className?: string
 }
 
 const Form: React.FunctionComponent<Props> = props => {
@@ -25,7 +28,12 @@ const Form: React.FunctionComponent<Props> = props => {
     props.onChange(newValue)
   }
   return (
-    <form onSubmit={onSubmit}>
+    <form
+      className={sc("", {
+        extra: [props.className].join(" ")
+      })}
+      onSubmit={onSubmit}
+    >
       {props.fileds.map(f => (
         <div key={f.name}>
           <span>{f.label}</span>

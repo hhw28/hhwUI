@@ -11,7 +11,6 @@ interface ClassToggles {
 const scopedClassMaker = (prefix: string) => {
   return (name: string | ClassToggles = "", options?: Options) => {
     const nameObject = name instanceof Object ? name : { [name]: name };
-
     return Object.entries(nameObject)
       .filter(item => item[1] !== false)
       .map(item => item[0])
