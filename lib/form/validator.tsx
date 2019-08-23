@@ -35,7 +35,7 @@ const validator = (value: FormValue, rules: FormRules): FormErrors => {
     if (rule.maxLength && !isEmpty(value[rule.key]) && value[rule.key].length > rule.maxLength) {
       setError(rule.key, `太长，用户名长度为${rule.minLength}-${rule.maxLength}个字符`)
     }
-    if (rule.pattern && !isEmpty(value[rule.key]) && !rule.pattern.test(value[rule.key])) {
+    if (rule.pattern && isEmpty(value[rule.key]) && !rule.pattern.test(value[rule.key])) {
       setError(rule.key, '用户名格式错误')
     }
   })

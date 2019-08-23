@@ -1,1 +1,31 @@
 @import "../helper";
+
+.hhw-form {
+
+  &-tabel {
+    border-collapse: collapse;
+  }
+
+  &-td {
+    padding-bottom: 8px;
+    vertical-align: top;
+  }
+
+  &-label {
+    line-height: 30px;
+  }
+
+  &-tr:first-child &-td {
+    padding-top: 0;
+  }
+
+  &-td+&-td {
+    padding-left: 16px;
+  }
+
+  &-error {
+    color: $color-err;
+    font-size: 0.8em;
+    margin-top: 4px;
+  }
+}

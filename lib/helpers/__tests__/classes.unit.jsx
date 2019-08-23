@@ -1,4 +1,4 @@
-import classes, { scopedClassMaker } from "../classes";
+import { classes, scopedClassMaker } from "../classes";
 
 describe("classes", () => {
   it("接收 1个参数", () => {

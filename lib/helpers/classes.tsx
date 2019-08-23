@@ -14,12 +14,12 @@ const scopedClassMaker = (prefix: string) => {
     return Object.entries(nameObject)
       .filter(item => item[1] !== false)
       .map(item => item[0])
-      .map(name => [prefix, name].filter(Boolean).join("-"))
+      .map(name => (
+        [prefix, name].filter(Boolean).join("-")
+      ))
       .concat((options && options.extra) || [])
       .join(" ");
   };
 };
 
-export { scopedClassMaker };
-
-export default classes;
+export { classes, scopedClassMaker };

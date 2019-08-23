@@ -9,6 +9,10 @@
   transition: all 250ms;
   cursor: pointer;
 
+  +.hhw-button {
+    margin-left: 16px;
+  }
+
   &:focus {
     outline: none;
   }
@@ -65,4 +69,19 @@
     }
   }
 
+  &-icon {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    vertical-align: center;
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      .hhw-icon {
+        color: $color-main;
+      }
+    }
+  }
 }
