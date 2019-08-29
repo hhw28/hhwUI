@@ -6,6 +6,10 @@ module.exports = Object.assign({}, base, {
   entry: {
     example: "./example.tsx"
   },
+  devServer: {   
+    port: 9090,  
+    open: true,  
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "example.html"

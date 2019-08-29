@@ -7,39 +7,70 @@ interface FormRule {
   minLength?: number,
   maxLength?: number,
   pattern?: RegExp,
+  validator?: (value:string) => Promise<string>,
 }
 
-interface FormErrors {
+type OneError = string | Promise<string>; 
 
-}
-
-const validator = (value: FormValue, rules: FormRules): FormErrors => {
+const validator = (Formvalue: FormValue, rules: FormRules, callback: (error:any) => void): void => {
   const errors: any = {}
 
   const isEmpty = (value: any) => {
     return value === undefined || value === null || value === '';
   }
-  const setError = (key: string, message: string) => {
+  const setError = (key: string, error: OneError) => {
     if (isEmpty(errors[key])) {
       errors[key] = []
     }
-    errors[key].push(message)
+    errors[key].push(error)
   }
   rules.map(rule => {
-    if (rule.required && isEmpty(value[rule.key])) {
-      setError(rule.key, '必填')
+    const value = Formvalue[rule.key];
+    if(rule.validator){
+      const promise = rule.validator(value)
+      setError(rule.key, promise)
     }
-    if (rule.minLength && !isEmpty(value[rule.key]) && value[rule.key].length < rule.minLength) {
-      setError(rule.key, `太短，用户名长度为${rule.minLength}-${rule.maxLength}个字符`)
+    if (rule.required && isEmpty(value)) {
+      setError(rule.key, 'required')
     }
-    if (rule.maxLength && !isEmpty(value[rule.key]) && value[rule.key].length > rule.maxLength) {
-      setError(rule.key, `太长，用户名长度为${rule.minLength}-${rule.maxLength}个字符`)
+    if (rule.minLength && !isEmpty(value) && value.length < rule.minLength) {
+      setError(rule.key, 'minLength')
     }
-    if (rule.pattern && isEmpty(value[rule.key]) && !rule.pattern.test(value[rule.key])) {
-      setError(rule.key, '用户名格式错误')
+    if (rule.maxLength && !isEmpty(value) && value.length > rule.maxLength) {
+      setError(rule.key, 'maxLength')
+    }
+    if (rule.pattern && !isEmpty(value) && !rule.pattern.test(value)) {
+      setError(rule.key, 'pattern')
     }
   })
-  return errors
+
+  const flattenErrors = flat(Object.keys(errors).map(key => errors[key].map((promise: any) => [key, promise])))
+  const newPromise = flattenErrors.map(([key, promiseOrString]) => (promiseOrString instanceof Promise ? promiseOrString : Promise.reject(promiseOrString))
+  .then(() => [key, undefined], (reason) => [key, reason]))
+
+  Promise.all(newPromise).then(result => {
+    callback(zip(result.filter((item: any[]) => item[1])))
+  })
 }
 
 export default validator
+
+function flat(array: Array<any>){
+  let result = []
+  for(let i=0; i<array.length; i++){
+    if(array[i] instanceof Array){
+      result.push(...array[i])
+    }else{
+      result.push(array[i])
+    }
+  }
+  return result
+}
+function zip(array: any[][]){
+  let result:any = {}
+  array.map(([key, value]) => {
+    result[key] = result[key] || []
+    result[key].push(value)
+  })
+  return result
+}

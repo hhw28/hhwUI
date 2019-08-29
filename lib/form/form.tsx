@@ -8,14 +8,15 @@ export interface FormValue {
   [k: string]: any
 }
 interface Props {
-  value: FormValue
-  fileds: Array<{ name: string, label: string, input: { type: string } }>
-  buttons: ReactFragment
-  onSubmit: React.FormEventHandler<HTMLFormElement>
-  onChange: (value: FormValue) => void
-  className?: string
-  errors: { [K: string]: string[] }
-  errorsDisplayMode?: 'first' | 'all'
+  value: FormValue;
+  fileds: Array<{ name: string, label: string, input: { type: string } }>;
+  buttons: ReactFragment;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  onChange: (value: FormValue) => void;
+  className?: string;
+  errors: { [K: string]: string[] };
+  errorsDisplayMode?: 'first' | 'all';
+  transformError?: (message: string) => string;
 }
 
 const Form: React.FunctionComponent<Props> = props => {
@@ -27,6 +28,14 @@ const Form: React.FunctionComponent<Props> = props => {
   const onInputChange = (name: string, value: string) => {
     const newValue = { ...formData, [name]: value }
     props.onChange(newValue)
+  }
+  const transformError = (message: string) => {
+    const map: any = {
+      required: '必填',
+      minLength: '太短',
+      maxLength: '太长',
+    }
+    return props.transformError && props.transformError(message) || map[message] || '未知错误'
   }
   return (
     <form
@@ -51,9 +60,9 @@ const Form: React.FunctionComponent<Props> = props => {
                 />
                 <div className={sc('error')}>
                   {props.errors[f.name] ?
-                    props.errorsDisplayMode === 'first' ?
-                      props.errors[f.name][0] :
-                      props.errors[f.name].join('，') :
+                    (props.errorsDisplayMode === 'first' ?
+                      transformError!(props.errors[f.name][0]) :
+                      props.errors[f.name].map(transformError!).join('，')) :
                     <span>&nbsp;</span>
                   }
                 </div>
