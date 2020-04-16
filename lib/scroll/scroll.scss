@@ -1,0 +1,46 @@
+@import "../helper";
+
+.hhw-scroll {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+
+    &-inner {
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &-track {
+        width: 10px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+
+    }
+
+    &-bar {
+        width: 6px;
+        background-color: rgba(164, 165, 166, .6);
+        height: 30px;
+        position: absolute;
+        left: 2px;
+        border-radius: 4px;
+    }
+
+    &-pulling {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+}

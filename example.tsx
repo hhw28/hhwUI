@@ -7,6 +7,7 @@ import InputDemo from "./lib/input/input.demo";
 import DialogDemo from "./lib/dialog/dialog.demo";
 import FormDemo from "./lib/form/form.demo";
 import LayoutDemo from "./lib/layout/layout.demo";
+import ScrollDemo from "./lib/scroll/scroll.demo";
 import { Layout, Header, Main, Footer, Aside } from "./lib/layout/layout";
 import "./example.scss";
 
@@ -41,6 +42,9 @@ ReactDOM.render(
             <li>
               <NavLink to="/form">Form</NavLink>
             </li>
+            <li>
+              <NavLink to="/scroll">Scroll</NavLink>
+            </li>
           </ul>
         </Aside>
         <Main className="site-main">
@@ -50,6 +54,7 @@ ReactDOM.render(
           <Route path="/layout" component={LayoutDemo} />
           <Route path="/form" component={FormDemo} />
           <Route path="/input" component={InputDemo} />
+          <Route path="/scroll" component={ScrollDemo} />
         </Main>
       </Layout>
       <Footer className="site-footer">&copy; 王欢</Footer>
